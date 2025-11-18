@@ -1,3 +1,5 @@
+# Playbook is : A list plays
+
 - hosts: all
   name: Install Apache and PHP
   become: yes
@@ -9,4 +11,14 @@
         name:
           - apache2
           - php
-          
+          - mediawiki
+          - python3-pymysql
+          - mariadb-server 
+
+
+# grant all on mediawiki.* to 'mediawiki'@'%' identified by 'mediawiki'
+    - name: Grant all privlileges to mediawiki user
+      community.mysql.mysql_query:
+        login_user: root
+        query: "GRANT ALL ON mediawiki.* TO 'mediawiki'@'localhost' IDENTIFIED BY 'mediawiki';"
+        login_unix_socket: /run/mysqld/mysqld.sock

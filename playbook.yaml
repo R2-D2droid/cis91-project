@@ -16,7 +16,6 @@
           - mariadb-server 
 
 
-# grant all on mediawiki.* to 'mediawiki'@'%' identified by 'mediawiki'
     - name: Grant all privlileges to mediawiki user
       community.mysql.mysql_query:
         login_user: root
